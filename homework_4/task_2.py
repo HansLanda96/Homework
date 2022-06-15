@@ -1,27 +1,40 @@
-def amount(sequence: list) -> int:  # create function that will give us length of sequence
+def input_number(number: str) -> int:
+    """return input of number"""
+    result = ''
+    while not result.isdigit():
+        result = input(number)
+    return int(result)
+
+
+def amount(sequence: list) -> int:
+    """return length of sequence"""
     return len(sequence)
 
 
-def summary(sequence: list) -> int:  # create function that will give us sum of all elements in sequence
-    summ = 0
+def summary(sequence: list) -> int:
+    """return sum of sequence"""
+    summa = 0
     for element in sequence:
-        summ += element
-    return summ
+        summa += element
+    return summa
 
 
-def multiplication(sequence: list) -> int:  # create function that will multiply all elements in sequence
+def multiplication(sequence: list) -> int:
+    """return multiplication of sequence"""
     multipl_operation = 1
     for integers in sequence:
         multipl_operation *= integers
     return multipl_operation
 
 
-def average_sequence(sequence: list) -> float:  # create function that will give average mean of sequence
+def average_sequence(sequence: list) -> float:
+    """return average mean of sequence"""
     avg = (summary(sequence) / amount(sequence)) * 10 // 1 / 10
     return avg
 
 
-def highest_value_index(sequence: list) -> tuple:  # create function that will give highest of number and index
+def highest_value_index(sequence: list) -> tuple:
+    """return highest val in sequence with index"""
     highest = 0
     _index_ = 0
     for index, integers in enumerate(sequence):
@@ -31,7 +44,8 @@ def highest_value_index(sequence: list) -> tuple:  # create function that will g
     return _index_, highest
 
 
-def even_nums(sequence: list) -> int:   # create function that will give amount of even nums
+def even_nums(sequence: list) -> int:
+    """return even numbers of sequence"""
     result = 0
     for integer in sequence:
         if integer % 2 == 0:
@@ -39,7 +53,8 @@ def even_nums(sequence: list) -> int:   # create function that will give amount 
     return result
 
 
-def odd_nums(sequence: list) -> int:    # create function tah will give amount of odd nums
+def odd_nums(sequence: list) -> int:
+    """return odd numbers of sequence"""
     result = 0
     for integer in sequence:
         if integer % 2 != 0:
@@ -47,7 +62,8 @@ def odd_nums(sequence: list) -> int:    # create function tah will give amount o
     return result
 
 
-def second_highest(sequence: list, highest_num: int) -> tuple:  # create function that will give second-highest number
+def second_highest(sequence: list, highest_num: int) -> tuple:
+    """return second high number in sequence"""
     sec_high = 0
     for integer in sequence:
         if sec_high < integer < highest_num:
@@ -55,7 +71,8 @@ def second_highest(sequence: list, highest_num: int) -> tuple:  # create functio
     return sec_high
 
 
-def highest_ints_from_sequence(sequence: list, number: int) -> int:  # create function that will give amount of hi-ints
+def highest_ints_from_sequence(sequence: list, number: int) -> int:
+    """return high amounts"""
     high_amount = 0
     for nums in sequence:
         if nums == number:
@@ -63,21 +80,16 @@ def highest_ints_from_sequence(sequence: list, number: int) -> int:  # create fu
     return high_amount
 
 
-def input_number(number: str) -> int:    # create function that will allow to input nums in var
-    result = ''
-    while not result.isdigit():
-        result = input(number)
-    return int(result)
-
-
-def main():     # create main function that will take "input" and  print all results from all functions in file
+def main():
+    """create main func that gives access for all funcs in file"""
     sequence_list = []
     sequence = ''
     while sequence != 0:
         sequence = input_number("Insert positive integers in sequence (press '0' if you want to stop): ")
         if sequence != 0:
             sequence_list.append(sequence)
-    highest_number = highest_value_index(sequence_list)
+    else:   # add additional var for normal work of two last funcs
+        highest_num = highest_value_index(sequence_list)
 
     print(f"\nYou insert this nums in sequence: {sequence_list}"
           f"\nAmount of nums that inserted in sequence: {amount(sequence_list)}"
@@ -88,9 +100,10 @@ def main():     # create main function that will take "input" and  print all res
           f"with index {highest_value_index(sequence_list)[0]}"
           f"\nAmount of even numbers in sequence: {even_nums(sequence_list)}"
           f"\nAmount of odd numbers in sequence: {odd_nums(sequence_list)}"
-          f"\nSecond highest number in sequence: {second_highest(sequence_list, highest_number[1])}"
-          f"\nHighest numbers in sequence occur: {highest_ints_from_sequence(sequence_list, highest_number[1])} times ")
+          f"\nSecond highest number in sequence: {second_highest(sequence_list, highest_num[1])}"
+          f"\nHighest numbers in sequence occur: {highest_ints_from_sequence(sequence_list, highest_num[1])} times ")
 
 
 if __name__ == '__main__':
+    """enter point of program"""
     main()
