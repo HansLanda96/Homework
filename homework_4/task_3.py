@@ -3,7 +3,7 @@ from task_2 import input_number as inp
 
 
 def sequence_nums(first_num: int, second_num: int, var_list: list):
-    """create func that allows us to iterate and append list"""
+    """create func that allows us to iterate through a list and append integers in  list"""
     while first_num > second_num or first_num < second_num:
         if first_num < second_num:
             var_list.append(first_num)

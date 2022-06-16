@@ -81,7 +81,7 @@ def highest_ints_from_sequence(sequence: list, number: int) -> int:
 
 
 def main():
-    """create main func that gives access for all funcs in file"""
+    """create main func that will run all func in file"""
     sequence_list = []
     sequence = ''
     while sequence != 0:
