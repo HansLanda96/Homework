@@ -20,7 +20,7 @@ def random_list():
 
     :return: gives randomly generated list with input params
     """
-    number_start = int(input("Insert star number for generating numbers into a random list : "))
+    number_start = int(input("Insert start number for generating numbers into a random list : "))
     number_end = int(input("Insert on what number you want to end the generation of numbers into a random list: "))
     range_start = int(input("Insert the minimum desired amount of numbers in the random list: "))
     range_end = int(input("Insert the maximum desired amount of numbers in the random list: "))
