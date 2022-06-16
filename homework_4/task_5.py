@@ -1,4 +1,5 @@
 def string_input():
+    """func will return input letters and numbers in string"""
     string = ""
     while not string.isalnum():
         string = input("Program will not count a row if you'll input any specific symbol including 'space bar'!!!"
@@ -7,6 +8,7 @@ def string_input():
 
 
 def main():
+    """func work with input and printing needed results"""
     string = string_input()
     print(f'\nYou created a row that includes this elements: {string}'
           f'\nThird element in a row: {string[2]}'
@@ -25,9 +27,9 @@ if __name__ == "__main__":
     main()
 
 
-# ALSO possible to solve this task like this.
-# And we will not have any probs with specific symbols or space bar
-# In this case very funny to write message for example, that's give funny results:D
+"""ALSO possible to solve this task like this.
+And we will not have any probs with specific symbols or space bar
+In this case very funny to write message for example, that's give funny results:D"""
 
 row = str(input("Insert any elements in a row: "))
 print(f'\nYou created a row that includes this elements: {row}'
