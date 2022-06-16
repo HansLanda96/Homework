@@ -1,5 +1,5 @@
 from random import *
-"""Create list that will have numbers from 0 to 7 and will have range from 5 symbols to 55 symbols"""
+"""Create list that will have numbers from 1 to 7 and will have range from 5 symbols to 55 symbols"""
 
 random_list = [randint(1, 7) for random_number in range(randint(5, 55))]
 check = 0
