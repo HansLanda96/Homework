@@ -27,7 +27,7 @@ if __name__ == "__main__":
     main()
 
 
-"""ALSO possible to solve this task like this.
+"""ALSO possible to solve this task like this
 And we will not have any probs with specific symbols or space bar
 In this case very funny to write message for example, that's give funny results:D"""
 
