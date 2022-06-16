@@ -92,7 +92,7 @@ def main():
         highest_num = highest_value_index(sequence_list)
 
     print(f"\nYou insert this nums in sequence: {sequence_list}"
-          f"\nAmount of nums that inserted in sequence: {amount(sequence_list)}"
+          f"\n\nAmount of nums that inserted in sequence: {amount(sequence_list)}"
           f"\nSum of nums in sequence: {summary(sequence_list)}"
           f"\nMultiplication for all numbers in sequence: {multiplication(sequence_list)}"
           f"\nAverage in sequence: {average_sequence(sequence_list)}"
@@ -101,7 +101,7 @@ def main():
           f"\nAmount of even numbers in sequence: {even_nums(sequence_list)}"
           f"\nAmount of odd numbers in sequence: {odd_nums(sequence_list)}"
           f"\nSecond highest number in sequence: {second_highest(sequence_list, highest_num[1])}"
-          f"\nHighest numbers in sequence occur: {highest_ints_from_sequence(sequence_list, highest_num[1])} times ")
+          f"\nHighest number(s) in sequence occur: {highest_ints_from_sequence(sequence_list, highest_num[1])} times ")
 
 
 if __name__ == '__main__':
