@@ -13,12 +13,12 @@ def main():
     print(f'\nYou created a row that includes this elements: {string}'
           f'\nThird element in a row: {string[2]}'
           f'\nPenultimate element in a row: {string[-2]}'
-          f'\nFirst five elements in a row: {string[0 : 5]}'
-          f'\nWhole row without two last elements: {string[0 : -2]}'
-          f'\nEvery "even" element in a row: {string[0 : : 2]}'
-          f'\nEvery "odd" element in a row: {string[1 : : 2]}'
-          f'\nReversed row: {string[ : : -1]}'
-          f'\nReversed row with every second element: {string [-1 : : -2  ]}'
+          f'\nFirst five elements in a row: {string[0:5]}'
+          f'\nWhole row without two last elements: {string[0:-2]}'
+          f'\nEvery "even" element in a row: {string[0::2]}'
+          f'\nEvery "odd" element in a row: {string[1::2]}'
+          f'\nReversed row: {string[::-1]}'
+          f'\nReversed row with every second element: {string [-1::-2]}'
           f'\nLength of row: {len(string)}'
           f'\n')
 
