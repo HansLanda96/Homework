@@ -1,22 +1,10 @@
 from random import *
-"""Create list that will have numbers from 1 to 7 and will have range from 5 symbols to 55 symbols"""
-
-random_list = [randint(1, 7) for random_number in range(randint(5, 55))]
-check = 0
-for random_number in range(1, len(random_list) - 1):
-    if random_list[random_number - 1] < random_list[random_number] > random_list[random_number + 1]:
-        check += 1
-print(f'Program generated random list: {random_list} '
-      f'\n\nNumbers in random list that bigger than neighbours equals: {check}\n')
-
-
-"""ANOTHER SOLUTION"""
 
 
 def random_list():
     """
-    with this func you can create own random list with needed params
-    Also can use this in different tasks where I need randomly generated list with integers(in task_7 for example:D)
+    with this func you can create own random list with needed params.
+    Also, can use this in different tasks where you need randomly generated list with integers(in task_7 for example:D)
 
     :return: gives randomly generated list with input params
     """
@@ -42,9 +30,11 @@ def main():
 
 
 if __name__ == "__main__":
+    """enter point of program"""
     main()
 
 
+"""ANOTHER SOLUTION WITH DEF"""
 """also I can do func random_list in another way. With required parameters
    it will look like this:                                              """
 
@@ -62,3 +52,12 @@ def random_list1(number_start, number_end, range_start, range_end):
 
 
 """if i create func like this i will insert required param in random_list(1, 5, 10, 45)"""
+
+"""SOLUTION WITHOUT DEF """
+rlist = [randint(1, 7) for random_number in range(randint(5, 55))]
+check = 0
+for random_number in range(1, len(rlist) - 1):
+    if rlist[random_number - 1] < rlist[random_number] > rlist[random_number + 1]:
+        check += 1
+# print(f'Program generated random list: {rlist} '
+#       f'\n\nNumbers in random list that bigger than neighbours equals: {check})
