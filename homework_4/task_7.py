@@ -1,4 +1,4 @@
-from task_6 import random_list as rl
+from homework_4.task_6 import random_list as rl
 """import module random_list into a file"""
 
 
@@ -25,8 +25,8 @@ if __name__ == "__main__":
 
 
 """SOLUTION WITHOUT FUNC"""
-any_list = set(rl())
-any_list2 = set(rl())
+# any_list = set(rl())
+# any_list2 = set(rl())
 # print(f'\n\nFirst created list: {list(any_list)} '
 #       f'\n\nSecond created list: {list(any_list2)}'
 #       f'\nNumbers that exist in first and second list: {any_list & any_list2}'
