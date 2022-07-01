@@ -37,8 +37,8 @@ def average_temp(response: Response) -> list:
 
 def temp_collection(d: list, average: list, day: list, night: list) -> list:
     result = []
-    for dates, t_average, t_day, t_night in zip(d, average, day, night):
-        result.append({'date': dates, 'avg': t_average, 'day': t_day, 'night': t_night})
+    for dates, avg, _day, _night in zip(d, average, day, night):
+        result.append({'date': dates, 'avg': avg, 'day': _day, 'night': _night})
     return result
 
 
