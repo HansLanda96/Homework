@@ -43,8 +43,8 @@ def temp_collection(d: list, average: list, day: list, night: list) -> list:
 
 
 def file_name(city: str, forecast: int) -> str:
-    ret = f'{dt.now().strftime("%d-%m-%Y")} {city.capitalize()} {forecast} days weather forecast.txt'
-    return ret.replace(' ', '-')
+    result = f'{dt.now().strftime("%d-%m-%Y")} {city.capitalize()} {forecast} days weather forecast.txt'
+    return result.replace(' ', '-')
 
 
 def file_create(name_file: str, data: list):
