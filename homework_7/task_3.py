@@ -23,7 +23,7 @@ def date_weather(response: Response) -> list:
 def temp_list(response: Response, key: str) -> list:
     result = []
     for temp in response['list']:
-        result.append(temp['temp'][key])
+        result.append(float(temp['temp'][key]))
     return result
 
 
@@ -31,7 +31,7 @@ def average_temp(response: Response) -> list:
     result = []
     for item in response['list']:
         average = round((item['temp']['max'] + item['temp']['min']) / 2, 2)
-        result.append(average)
+        result.append(float(average))
     return result
 
 
