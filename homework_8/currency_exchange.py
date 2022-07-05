@@ -79,7 +79,7 @@ def tab_rows(cur_from: str, cur_to: str, amount: float, date: str) -> list:
 
 
 def table(cur_from: str, cur_to: str, amount: float, date: list) -> list:
-    result = [['DATE', '   FROM', '   TO', '   AMOUNT', '   RATE', '   RESULT']]
+    result = [['DATE', 'FROM', 'TO', 'AMOUNT', 'RATE', 'RESULT']]
     for dates in date:
         result.append(tab_rows(cur_from, cur_to, amount, dates))
     return result
