@@ -95,7 +95,7 @@ def main():
         currencies=currencies_list,
         default="UAH"
     )
-    array = tabulate(table(
+    tably = tabulate(table(
         date=dates,
         cur_from=params.from_currency,
         cur_to=params.to_currency,
@@ -105,9 +105,9 @@ def main():
     if params.save_file:
         name = file_name(params.from_currency, params.to_currency, params.amount)
         with open(name, 'w') as f:
-            f.write(array)
+            f.write(tably)
     else:
-        print(array)
+        print(tably)
 
 
 if __name__ == '__main__':
