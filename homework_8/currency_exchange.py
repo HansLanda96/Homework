@@ -25,7 +25,7 @@ def args_parser():
 
 
 def file_name(curr_from: str, curr_to: str, amount: float) -> str:
-    return f'{date_now()} {curr_from} {curr_to} {amount}.txt'.replace(" ", "-")
+    return f'{date_now()}-{curr_from}-{curr_to}-{amount}.txt'
 
 
 def save_json(name: str, currency: dict):
@@ -33,7 +33,7 @@ def save_json(name: str, currency: dict):
         json.dump(currency, f)
 
 
-def response_json(url: str, values=()) -> json:
+def response_json(url: str, values: dict) -> json:
     return requests.get(url,  params=values).json()
 
 
@@ -43,16 +43,13 @@ def load_json(name: str):
 
 
 def symbols_json() -> dict:
-    currency = {'symbols': []}
-    currency_json = load_json('symbols.json')
-    for cur in currency_json['symbols']:
-        currency['symbols'].append(cur)
-    return currency
+    file = load_json('symbols.json')['symbols']
+    return file.keys()
 
 
 def currency_checker(currencies: dict, default: str, currency: str) -> str:
     currency = currency.upper()
-    for cur in currencies['symbols']:
+    for cur in currencies:
         if currency == cur:
             return currency
     return default
@@ -98,18 +95,19 @@ def main():
         currencies=currencies_list,
         default="UAH"
     )
-    array = table(
+    array = tabulate(table(
         date=dates,
         cur_from=params.from_currency,
         cur_to=params.to_currency,
         amount=params.amount
-    )
+    ), tablefmt='github', headers='firstrow')
+
     if params.save_file:
         name = file_name(params.from_currency, params.to_currency, params.amount)
         with open(name, 'w') as f:
-            f.write(tabulate(array, tablefmt='github'))
+            f.write(array)
     else:
-        print(tabulate(array, tablefmt='github'))
+        print(array)
 
 
 if __name__ == '__main__':
