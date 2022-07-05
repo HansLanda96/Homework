@@ -1,6 +1,5 @@
 import requests
 import json
-import csv
 from argparse import ArgumentParser
 from datetime import datetime as dt, timedelta as td
 from tabulate import tabulate
@@ -85,13 +84,6 @@ def table(cur_from: str, cur_to: str, amount: float, date: list) -> list:
     return result
 
 
-def save_txt(name: str, tabl: list):
-    with open(name, 'w') as f:
-        file = csv.writer(f, delimiter='\t')
-        for rows in tabl:
-            file.writerow(rows)
-
-
 def main():
     params = args_parser()
     dates = dates_list(params.start_date)
@@ -114,7 +106,8 @@ def main():
     )
     if params.save_file:
         name = file_name(params.from_currency, params.to_currency, params.amount)
-        save_txt(name, array)
+        with open(name, 'w') as f:
+            f.write(tabulate(array, tablefmt='github'))
     else:
         print(tabulate(array, tablefmt='github'))
 
