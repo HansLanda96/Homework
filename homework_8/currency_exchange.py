@@ -111,4 +111,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except requests.ConnectionError as e:
+        print(f'Connection Error: \n{e}')
