@@ -26,4 +26,4 @@ if __name__ == '__main__':
     try:
         main()
     except ValueError:
-        print("You didn't enter any words")
+        print("Dude, you didn't even enter a single letter")
