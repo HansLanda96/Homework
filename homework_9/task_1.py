@@ -14,6 +14,8 @@ def count_points(win: int, draw: int, loss: int) -> int:
     return win * 3 + draw - loss
 
     # Uncomment if you u want to add exceptions
+    # Any of the params cannot equal zero or less than zero
+    # Also points do not go negative
     # result = 0
     # if win >= 0 and draw >= 0 and loss >= 0:
     #     points = win * 3 + draw - loss
