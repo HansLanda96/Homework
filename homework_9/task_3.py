@@ -1,12 +1,12 @@
 """
 Longest word in a string
 """
-from string import punctuation
+from string import punctuation, digits
 
 
 def str_strip(text: str) -> str:
     """Strip and return text without digits and punctuation symbols"""
-    return text.strip(punctuation)
+    return text.strip(punctuation + digits)
 
 
 def long_word(text: str) -> str:
