@@ -128,9 +128,9 @@ class BankAccount:
 
     def _valid_name(self, name):
         if len(name) > 17:
-            raise ValueError(f'Your name/surname cannot be more than 17 characters')
+            raise ValueError(f'Your {name} cannot be more than 17 characters')
         if not name.isalpha():
-            raise ValueError(f'Name/Surname must be with letters')
+            raise ValueError(f'{name} must be only with letters')
         return name
 
     def _format_transactions(self):
