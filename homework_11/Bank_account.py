@@ -1,7 +1,7 @@
 """
 Awesome Class Bank Account
 """
-from uuid import uuid4, uuid1           # Using built-in module to create id of acc and transaction
+from uuid import uuid4           # Using built-in module to create id of acc and transaction
 from decimal import Decimal             # Using built-in module for easiest bank calculation
 from datetime import datetime as dt     # Using built-in module for date now
 
@@ -109,7 +109,7 @@ class BankAccount:
     def __init__(self, name: str, surname: str):
         self._name = self._valid_name(name.capitalize())
         self._surname = self._valid_name(surname.capitalize())
-        self._uid = uuid1()
+        self._uid = uuid4()
         self._balance = (Decimal(0))
         self._transactions = []
 
