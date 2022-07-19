@@ -37,6 +37,7 @@ class Transaction:
     __str__(self)
         Print beautiful output in console :D
     """
+
     def __init__(self, amount: Decimal, operation: str, status="Confirmed"):
         self.amount = round(amount, 2)
         self.commission = round(amount * Decimal(0.01), 2)
