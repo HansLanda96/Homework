@@ -159,13 +159,13 @@ class BankAccount:
 
 def main():
     account = BankAccount("Egor", "Marchenko")
-    account.withdrawal("100")
-    account.deposit("3000")
-    account.withdrawal("2300")
+    account.withdrawal("100.73")
+    account.deposit("3000.24")
+    account.withdrawal("2300.15")
     account.withdrawal("100")
     account_1 = BankAccount("Oleksiy", "Fedoriv")
-    account_1.deposit("5000")
-    account_1.withdrawal("10000")
+    account_1.deposit("5000.99")
+    account_1.withdrawal("10000.22")
     account_1.withdrawal("3000.12")
     print(account, account_1)
 
