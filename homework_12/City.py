@@ -100,7 +100,7 @@ class City:
         return f'''
         City: {self.name}
         Streets in {self.name}: {self.format_streets()}
-        Population of {self.name}: {self.city_population}
+        Population of {self.name}: {self.city_population} people
         '''
 
     def __repr__(self):
@@ -163,8 +163,8 @@ def main():
     city.city_filler()
     city.del_streets("gogi", "shmogi", "gogol", "mogol")
     city.add_streets("plotvinska", "novigradska", "chornobaivska", "vesimirska", "lastochkina", "cirivska")
-    city.del_streets("chornobaivskya")
-    city.del_houses("plotvinskaya", 0, 0, 0, 0)
+    city.del_streets("chornobaivska")
+    city.del_houses("plotvinska", 0, 0, 0, 0)
     city.del_houses("lastochkina", -1, -1, -1, -1)
     city.add_house("lastochkina")
 
