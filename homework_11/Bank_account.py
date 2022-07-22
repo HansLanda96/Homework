@@ -137,11 +137,11 @@ class BankAccount:
     def _format_transactions(self):
         return "\n".join([str(transaction) for transaction in self._transactions])
 
-    def deposit(self, amount: float | int):
+    def deposit(self, amount: str):
         self._transactions.append(Transaction(Decimal(amount), "Deposit"))
         self.balance_changes(self._transactions[-1])
 
-    def withdrawal(self, amount: float | int):
+    def withdrawal(self, amount: str):
         if self._balance - Decimal(amount) < 0:
             self._transactions.append(
                 Transaction(Decimal(amount), 'Withdrawal', 'Failed. Insufficient funds to complete the operation'))
@@ -159,14 +159,14 @@ class BankAccount:
 
 def main():
     account = BankAccount("Egor", "Marchenko")
-    account.withdrawal(100)
-    account.deposit(3000)
-    account.withdrawal(2300)
-    account.withdrawal(100)
+    account.withdrawal("100")
+    account.deposit("3000")
+    account.withdrawal("2300")
+    account.withdrawal("100")
     account_1 = BankAccount("Oleksiy", "Fedoriv")
-    account_1.deposit(5000)
-    account_1.withdrawal(10000)
-    account_1.withdrawal(3000)
+    account_1.deposit("5000")
+    account_1.withdrawal("10000")
+    account_1.withdrawal("3000.12")
     print(account, account_1)
 
 
