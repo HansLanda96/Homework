@@ -162,7 +162,7 @@ def main():
     city = City("Novigrad")
     city.city_filler()
     city.del_streets("gogi", "shmogi", "gogol", "mogol")
-    city.add_streets("plotvinskaya", "novigradskaya", "chornobaivskya", "vesimirskaya", "lastochkina", "cirivskaya")
+    city.add_streets("plotvinska", "novigradska", "chornobaivska", "vesimirska", "lastochkina", "cirivska")
     city.del_streets("chornobaivskya")
     city.del_houses("plotvinskaya", 0, 0, 0, 0)
     city.del_houses("lastochkina", -1, -1, -1, -1)
