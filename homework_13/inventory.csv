@@ -1,0 +1,12 @@
+Name,Type,Price,Quantity
+Espresso,coffee,27,10
+Doppio,coffee,38,5
+Americano,coffee,28,
+Americano with milk,coffee,35,20
+Black tea,tea,20,5
+Earl grey,tea,25,5
+Bread,bakery,10,2
+Ginger tea,tea,32,
+Green tea,tea,28,
+Jasmine tea,tea,28,
+Milk,additional,7,
