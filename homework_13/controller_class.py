@@ -1,7 +1,6 @@
 """
 Class allow to make changes in CoffeeShop class
 """
-from Coffee_Shop import CoffeeShop
 
 
 class StorageController:
@@ -37,7 +36,7 @@ class StorageController:
                 Return list of products by type
 
     """
-    def __init__(self, obj: CoffeeShop):
+    def __init__(self, obj):
         self.shop = obj
         self.storage = obj.storage
         self.sold = obj.products_sold

@@ -216,4 +216,5 @@ if __name__ == "__main__":
     shop.sell_product("Royal tea", 1)
     shop.sell_product("Americano with milk", 13)
     shop.sell_product("Cappuccino", 1)
+    shop.sell_product("Thai Tea", 1)
     print(shop, repr(shop))
