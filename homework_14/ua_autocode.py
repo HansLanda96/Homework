@@ -1,4 +1,3 @@
-# /^[АВCEHIKMOPTX|ABCEHIKMOPTX]{2}\d{4}[АВCEHIKMOPTX|ABCEHIKMOPTX]{2}$/
 import csv
 import re
 
@@ -10,18 +9,18 @@ class AutoCodes:
         self.new = new
 
     def __str__(self):
-        return f'{self.region} {self.old} {self.new}\n'
+        return f'\n{self.region} {self.old} {self.new}\n'
 
     def __repr__(self):
         return self.__str__()
 
 
-class UAAutocode:
+class AutocodeList:
     def __init__(self):
         self.codes = []
 
-    def import_data(self):
-        with open('ua_auto.csv', 'r') as f:
+    def import_data(self, filename: str):
+        with open(filename, 'r') as f:
             reader = csv.reader(f, dialect='excel')
             next(f)
             for row in reader:
@@ -29,88 +28,60 @@ class UAAutocode:
             return self.codes
 
 
-class UARegularExpression(UAAutocode):
+class UARegularExpression(AutocodeList):
+    translit = {
+        "A": "А", "B": "В", "C": "С", "E": "Е", "H": "Н", "I": "І", "K": "К", "M": "М", "O": "О", "P": "Р", "T": "Т",
+        "X": "Х"
+    }
+
     def __init__(self, code: str):
         super().__init__()
-        self.vehicle_code = code
-        self.codes = self.import_data()
-        self.pattern = re.compile(r'[ABCEHIKMOPTX|АВСЕНІКМОРТХ]{2}(?!0{4})\d{4}[ABCEHIKMOPTX|АВСЕНІКМОРТХ]{2}')
+        self.auto_code = code
+        self.latina = self.latina()
+        self.codes = self.import_data('ua_auto.csv')
+        self.pattern = re.compile(r'[АВСЕНІКМОРТХ]{2}(?!0{4})\d{4}[АВСЕНІКМОРТХ]{2}')
+
+    def latina(self):
+        var = list(self.auto_code)
+        code_ua = ''
+        for letter in var:
+            if letter in self.translit:
+                code_ua += self.translit[letter]
+            else:
+                code_ua += letter
+        return code_ua
 
     def check_vehicle_code(self):
-        if self.pattern.fullmatch(self.vehicle_code):
+        if self.pattern.match(self.latina):
             return True
         else:
             return False
 
 
-class FindAutoRegion(UARegularExpression):
-    def __init__(self, code: str):
-        super().__init__(code)
-
-    def find_vehicle_code(self):
+class UAFindAutoRegion(UARegularExpression):
+    def find_auto_code(self):
         if self.check_vehicle_code() is True:
             for code in self.codes:
-                if self.vehicle_code[:2] in (code.old or code.new):
-                    return f'{self.vehicle_code} -> is auto code of {code.region}'
-            return f'{self.vehicle_code} -> is not code of any region of Ukraine'
+                if self.latina[:2] in (code.old, code.new):
+                    return f'{self.latina} -> is auto code of {code.region}'
+            return f'{self.latina} -> is not code of any region of Ukraine'
         else:
-            return f'{self.vehicle_code} -> is not Ukrainian auto code'
+            return f'{self.latina} -> is not Ukrainian auto code'
 
 
-class CheckAutoNumber:
+class UACheckAutoNumber:
     def __init__(self):
         self.code = str(input('Enter vehicle code: ')).upper()
-        # self.ua_autocode = UAAutocode().import_data()
-        # self.regular_expression = RegularExpression(self.code)
-        # self.vehicle_check = AutoNumCheck(self.code)
-        self.find_vehicle = FindAutoRegion(self.code)
+        self.find_number = UAFindAutoRegion(self.code)
 
     def check_auto_number(self):
-        # self.vehicle_check.check_vehicle_code()
-        self.find_vehicle.find_vehicle_code()
-
-go = CheckAutoNumber()
-print(go.find_vehicle.find_vehicle_code())
+        return self.find_number.find_auto_code()
 
 
+def main():
+    check_auto = UACheckAutoNumber()
+    print(check_auto.check_auto_number())
 
 
-
-#
-
-# codes = UAAutocode().import_data()
-# print(codes)
-#
-#
-# codes = UACodes()
-# codes.import_codes()
-# print(codes.check_region())
- # self.codes[row['Region']] = {'Code 2004': row['Code 2004'], 'Code 2013': row['Code 2013']}
-# def __init__(self):
-#     self.codes = []
-#
-#     # import codes from ua_auto.csv
-#
-#
-# def import_codes(self):
-#     with open('ua_auto.csv', 'r') as f:
-#         codes = csv.reader(f)
-#         for row in codes:
-#             self.codes.append(row[0], row[1], row[2])
-#
-#
-# def check_code(self):
-#     if re.match(r'^[АВCEHIKMOPTX|ABCEHIKMOPTX]{2}\d{4}(?!0{4})[АВCEHIKMOPTX|ABCEHIKMOPTX]{2}$', self.code):
-#         return True
-#     else:
-#         return False
-#
-#     # if code True check region in  self.codes
-#
-#
-# def check_region(self):
-#     if self.check_code():
-#         if self.code[0:2] in self.codes['Region'].values():
-#             return self.codes['Region']
-#         else:
-#             return False
+if __name__ == '__main__':
+    main()
