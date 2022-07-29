@@ -1,4 +1,7 @@
-from Coffee_Shop import CoffeeShop   # Import class CoffeeShop. Allows to make changes in class CoffeeShop.
+"""
+Class allow to make changes in CoffeeShop class
+"""
+from Coffee_Shop import CoffeeShop
 
 
 class StorageController:
