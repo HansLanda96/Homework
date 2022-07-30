@@ -140,7 +140,7 @@ class UAFindAutoRegion(UARegularExpression):
         __________
             find_auto_code:
                 If code pass regular expression, return string with information about region of Ukraine.
-                If code pass, but doesn't exist in AutocodeList, return string with information.
+                If code pass, but doesn't exist in AutocodeList, return string with additional information.
 
     """
     def find_auto_code(self):
