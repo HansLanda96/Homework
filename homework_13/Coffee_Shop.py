@@ -1,7 +1,7 @@
 """
 Hillel Coffee Shop
 """
-from controller_class import *  # Controller class make iterations with list of imported products.
+from controller_class import StorageController  # Controller class make iterations with list of imported products.
 from exception_class import *   # Exception class for coffee shop.
 import csv
 
