@@ -14,7 +14,7 @@ class AutoCodes:
         Attributes:
         __________
             region: str
-                Region of Ukraine
+                Region of auto number
 
             old: str
                 Old auto number code for region
@@ -27,10 +27,10 @@ class AutoCodes:
         __________
 
         __str__:
-            Return string with all information about auto number
+            Represent imported auto numbers as string
 
         __repr__:
-            Same as __str__
+            Same as __str__ method
     """
     def __init__(self, region: str, old: str, new: str):
         self.region = region
