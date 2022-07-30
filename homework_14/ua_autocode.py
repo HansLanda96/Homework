@@ -85,7 +85,7 @@ class UARegularExpression(AutocodeList):
                 List of AutoCodes from AutocodeList class
 
             pattern: re.compile
-                Regular expression for check auto number code
+                Regular expression for check UA auto number code
 
         __________
 
