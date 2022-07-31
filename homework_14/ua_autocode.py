@@ -4,6 +4,7 @@
 
 import csv
 import re
+from transliterate import translit
 
 
 class AutoCodes:
@@ -109,23 +110,22 @@ class UARegularExpression(AutocodeList):
 
     def __init__(self, code: str):
         super().__init__()
-        self.auto_code = code
-        self.latina = self.latina_to_cyrilla()
+        self.auto_code = self.latina_to_cyrillic(code)
         self.codes = self.import_data('ua_auto.csv')
         self.pattern = re.compile(r'[АВСЕНІКМОРТХ]{2}(?!0{4})\d{4}[АВСЕНІКМОРТХ]{2}')
 
-    def latina_to_cyrilla(self):
-        var = list(self.auto_code)
+    def latina_to_cyrillic(self, code: str):
+        var = list(code)
         code = ''
-        for letter in var:
-            if letter in self.translit:
-                code += self.translit[letter]
+        for element in var:
+            if element in self.translit:
+                code += self.translit[element]
             else:
-                code += letter
+                code += element
         return code
 
     def check_vehicle_code(self):
-        if self.pattern.match(self.latina):
+        if self.pattern.match(self.auto_code):
             return True
         else:
             return False
@@ -146,20 +146,25 @@ class UAFindAutoRegion(UARegularExpression):
     def find_auto_code(self):
         if self.check_vehicle_code() is True:
             for code in self.codes:
-                if self.latina[:2] in (code.old, code.new):
-                    return f'{self.latina} -> is auto code of {code.region}'
-            return f'{self.latina} -> is not code of any region of Ukraine'
+                if self.auto_code[:2] in (code.old, code.new):
+                    code.region = translit(code.region, 'uk', reversed=True)
+                    return f'{self.auto_code} -> is auto code of {code.region}'
+            return f'{self.auto_code} -> is not code of any region of Ukraine'
         else:
-            return f'{self.latina} -> is not Ukrainian auto code'
+            return f'{self.auto_code} -> is not Ukrainian auto code'
 
 
 class UACheckAutoNumber:
     """
-        Class that makes all work from previous classes.
+        Class starts program. It will check auto number code.
+        __________
+        \nIf code is correct, it will return string with information about region of Ukraine.
+        __________
+        \nIf code is incorrect, it will return string with additional information.
+        __________
     """
-
     def __init__(self):
-        self.code = str(input('Enter vehicle code: ')).upper()
+        self.code = str(input('Enter vehicle code: ')).upper().replace(' ', '')
         self.find_number = UAFindAutoRegion(self.code)
 
     def check_auto_number(self):
@@ -167,8 +172,8 @@ class UACheckAutoNumber:
 
 
 def main():
-    check_auto = UACheckAutoNumber()
-    print(check_auto.check_auto_number())
+    exc = UACheckAutoNumber()
+    print(exc.check_auto_number())
 
 
 if __name__ == '__main__':
