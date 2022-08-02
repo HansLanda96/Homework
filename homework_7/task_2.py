@@ -1,37 +1,40 @@
-def celsius_convert(temp: float | int):
+def celsius_convert(temp: float):
     fahrenheit = 1.8 * temp + 32
     kelvin = 273.15 + temp
-    return fahrenheit, kelvin
+    return round(fahrenheit, 2), round(kelvin, 2)
 
 
-def fahrenheit_convert(temp: float | int):
+def fahrenheit_convert(temp: float):
     celsius = (temp - 32) * 5 / 9
     kelvin = celsius + 273.15
-    return celsius, kelvin
+    return round(celsius, 2), round(kelvin, 2)
 
 
-def kelvin_convert(temp: float | int):
+def kelvin_convert(temp: float):
     celsius = temp - 273.15
     fahrenheit = celsius * 1.8 + 32
-    return celsius, fahrenheit
+    return round(celsius, 2), round(fahrenheit, 2)
 
 
-def main():
-    temp_value = str(input("Enter which temperature you want to convert (C or F or K): ").capitalize())
-    temp = float(input("Enter temperature in degrees: "))
+def choice_temp(temp_value: str, temp: float):
+    if temp_value != "C" and temp_value != "F" and temp_value != "K":
+        raise ValueError("{} -> Unknown command. Try again".format(temp_value))
     match temp_value:
         case "C":
-            print(f'{temp} °C equals: {round(celsius_convert(temp)[0], 2)} °F '
-                  f'and {round(celsius_convert(temp)[1], 2)} °K')
+            return (f'{temp} °C equals: {celsius_convert(temp)[0]} °F '
+                    f'and {celsius_convert(temp)[1]} °K')
         case "F":
-            print(f'{temp} °F equals: {round(fahrenheit_convert(temp)[0], 2)} °C '
-                  f'and {round(fahrenheit_convert(temp)[1], 2)} °K')
+            return (f'{temp} °F equals: {fahrenheit_convert(temp)[0]} °C '
+                    f'and {fahrenheit_convert(temp)[1]} °K')
         case "K":
-            print(f'{temp} °K equals: {round(kelvin_convert(temp)[0], 2)} °C '
-                  f'and {round(kelvin_convert(temp)[1], 2)} °F')
-        case _:
-            print(f'\n\'{temp_value}\' - Unknown command!')
+            return (f'{temp} °K equals: {kelvin_convert(temp)[0]} °C '
+                    f'and {kelvin_convert(temp)[1]} °F')
 
-
-if __name__ == '__main__':
-    main()
+# def main():
+#     temp_value = str(input("Enter which temperature you want to convert (C or F or K): ").capitalize())
+#     temp = float(input("Enter temperature in degrees: "))
+#     print(choice_temp(temp_value, temp))
+#
+#
+# if __name__ == '__main__':
+#     main()

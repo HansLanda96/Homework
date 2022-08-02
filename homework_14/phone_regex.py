@@ -28,8 +28,8 @@ class UAPhoneNumber:
             If inputted phone number is less than 13 digits, it will be formatted.
             Else it will be returned as is.
     """
-    def __init__(self):
-        self.phone_number = str(input('Enter phone number: '))
+    def __init__(self, phone_number: str):
+        self.phone_number = phone_number
         self.ua_number = re.sub(r'\D', '', self.phone_number)
         self.formatted_ua = self.format_ua_num()
 
@@ -65,8 +65,8 @@ class UAOperatorPatterns(UAPhoneNumber):
             If inputted number pass formatting rules, it will be checked.
             Else it will be not recognized as UA phone number and will be not formatted.
     """
-    def __init__(self):
-        super().__init__()
+    def __init__(self, phone_number: str):
+        super().__init__(phone_number)
         self.operators = {
             r'^(?:(\+)?38)?(0(66|95|99)\d{7})$': 'Vodafone',
             r'^(?:(\+)?38)?(0(67|68|96|97|98)\d{7})$': 'Kyivstar',
@@ -84,7 +84,9 @@ class UAOperatorPatterns(UAPhoneNumber):
             return '\nFailed to recognize phone number'
 
 
-if __name__ == '__main__':
-    exc = UAOperatorPatterns()
-    print(exc.check_cellular_number())
+# if __name__ == '__main__':
+#     number_string = str(input('Enter phone number: '))
+#     number = UAPhoneNumber(number_string)
+#     exc = UAOperatorPatterns(number_string)
+#     print(exc.check_cellular_number())
 

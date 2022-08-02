@@ -46,9 +46,11 @@ class Transaction:
         self.status = status
         self.uid = uuid4()
 
-    def __str__(self):
         if self.operation == "Deposit":
             self.commission = 0
+
+    def __str__(self):
+
         return f'''
                         Date: {self.date}
                         Transaction ID: {self.uid}
@@ -129,9 +131,9 @@ class BankAccount:
 
     def _valid_name(self, name):
         if len(name) > 17:
-            raise ValueError(f'Your {name} cannot be more than 17 characters')
+            raise ValueError(f'Your name cannot be more than 17 characters')
         if not name.isalpha():
-            raise ValueError(f'{name} must be only with letters')
+            raise ValueError(f'Name or surname must be only with letters')
         return name
 
     def _format_transactions(self):
@@ -157,18 +159,18 @@ class BankAccount:
         self._balance = types[transactions.operation]
 
 
-def main():
-    account = BankAccount("Egor", "Marchenko")
-    account.withdrawal("100.73")
-    account.deposit("3000.24")
-    account.withdrawal("2300.15")
-    account.withdrawal("100")
-    account_1 = BankAccount("Oleksiy", "Fedoriv")
-    account_1.deposit("5000.99")
-    account_1.withdrawal("10000.22")
-    account_1.withdrawal("3000.12")
-    print(account, account_1)
-
-
-if __name__ == '__main__':
-    main()
+# def main():
+#     account = BankAccount("Egor", "Marchenko")
+#     account.withdrawal("100.73")
+#     account.deposit("3000.24")
+#     account.withdrawal("2300.15")
+#     account.withdrawal("100")
+#     account_1 = BankAccount("Oleksiy", "Fedoriv")
+#     account_1.deposit("5000.99")
+#     account_1.withdrawal("10000.22")
+#     account_1.withdrawal("3000.12")
+#     print(account, account_1)
+#
+#
+# if __name__ == '__main__':
+#     main()
