@@ -1,5 +1,5 @@
-from random import randint  # Allows to generate random amount of what we need
-from tabulate import tabulate  # Allows to create table
+from random import randint
+from tabulate import tabulate
 
 
 class City:
