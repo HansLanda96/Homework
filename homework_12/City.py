@@ -62,7 +62,7 @@ class City:
 
     @property
     def city_population(self):
-        return sum(street.street_population for _, street in self.streets.items())
+        return sum(street.street_population for population, street in self.streets.items())
 
     def add_house(self, name: str):
         self.streets[name].add_house()
