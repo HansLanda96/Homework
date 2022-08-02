@@ -53,7 +53,7 @@ class City:
 
     def __init__(self, name: str):
         self.name = name
-        self._streets = {}
+        self.streets = {}
 
     def city_filler(self):
         streets = ["gogi", "shmogi", "gogol", "mogol"]
@@ -62,26 +62,26 @@ class City:
 
     @property
     def city_population(self):
-        return sum(street.street_population for _, street in self._streets.items())
+        return sum(street.street_population for _, street in self.streets.items())
 
     def add_house(self, name: str):
-        self._streets[name].add_house()
+        self.streets[name].add_house()
 
     def del_houses(self, name: str, *house_index: [int]):
         for index in house_index:
-            self._streets[name].del_house(index)
+            self.streets[name].del_house(index)
 
     def add_streets(self, *name: [str]):
         for street in name:
-            self._streets[street] = Street(street)
+            self.streets[street] = Street(street)
 
     def del_streets(self, *name: [str]):
         for street in name:
-            del self._streets[street]
+            del self.streets[street]
 
     def prettytable(self):
         table = []
-        for street_name, street in self._streets.items():
+        for street_name, street in self.streets.items():
             for house in street.houses:
                 table.append({
                     "Street": street_name.capitalize(),
@@ -94,7 +94,7 @@ class City:
         return tabulate(self.prettytable(), headers="keys", tablefmt="fancy_grid", showindex=True)
 
     def format_streets(self):
-        return ", ".join([str(street).capitalize() for street in self._streets])
+        return ", ".join([str(street).capitalize() for street in self.streets])
 
     def __str__(self):
         return f'''
